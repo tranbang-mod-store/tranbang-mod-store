@@ -120,5 +120,79 @@ let toastTimer;function toast(s){let t=document.getElementById('toast');t.textCo
 const snow=document.getElementById('snow');for(let i=0;i<42;i++){let f=document.createElement('i');f.className='flake';let size=2+Math.random()*6;f.style.width=size+'px';f.style.height=size+'px';f.style.left=Math.random()*100+'%';f.style.animationDuration=(7+Math.random()*13)+'s';f.style.animationDelay=(-Math.random()*18)+'s';snow.appendChild(f)}
 // Initial category list is ready for the first tap.
 </script>
+
+<!-- TRANBANG MOD STORE - ADMIN -->
+<button id="adminOpen" style="position:fixed;left:12px;bottom:105px;z-index:60;background:#20f2a0;color:#062116;border:0;border-radius:12px;padding:12px;font-weight:bold">
+  ⚙️ ADMIN
+</button>
+
+<div id="adminPanel" style="display:none;position:fixed;inset:0;z-index:100;background:#080b12;color:white;padding:20px;overflow:auto;font-family:Arial">
+  <h2>⚙️ QUẢN TRỊ TRANBANG</h2>
+  <p>Thêm sản phẩm vào cửa hàng</p>
+
+  <label>Danh mục</label>
+  <select id="aGame" style="width:100%;padding:12px;margin:8px 0">
+    <option>Free Fire</option>
+    <option>Liên Quân</option>
+    <option>PUBG Mobile</option>
+    <option>8 Ball Pool</option>
+  </select>
+
+  <input id="aName" placeholder="Tên sản phẩm" style="width:100%;padding:12px;margin:8px 0">
+  <input id="aPrice" type="number" placeholder="Giá bán (VNĐ)" style="width:100%;padding:12px;margin:8px 0">
+  <textarea id="aKeys" placeholder="Nhập kho key, mỗi key một dòng" style="width:100%;height:130px;padding:12px;margin:8px 0"></textarea>
+
+  <button id="aSave" style="width:100%;padding:14px;background:#20f2a0;border:0;border-radius:10px;font-weight:bold">LƯU SẢN PHẨM</button>
+  <button id="aClose" style="width:100%;padding:14px;margin-top:10px;background:#333;color:white;border:0;border-radius:10px">ĐÓNG</button>
+  <div id="aMessage" style="margin-top:15px"></div>
+</div>
+
+<script>
+(function(){
+  const panel=document.getElementById('adminPanel');
+  const message=document.getElementById('aMessage');
+
+  let saved=[];
+  try {
+    saved=JSON.parse(localStorage.getItem('tb_admin_products')||'[]');
+  } catch(e) {}
+
+  saved.forEach(p=>{
+    if(items[p.game]) items[p.game].push([p.icon,p.name,p.desc,p.price,p.keys]);
+  });
+
+  document.getElementById('adminOpen').onclick=()=>panel.style.display='block';
+  document.getElementById('aClose').onclick=()=>panel.style.display='none';
+
+  document.getElementById('aSave').onclick=()=>{
+    const game=document.getElementById('aGame').value;
+    const name=document.getElementById('aName').value.trim();
+    const price=Number(document.getElementById('aPrice').value);
+    const keys=document.getElementById('aKeys').value
+      .split('\n').map(x=>x.trim()).filter(Boolean);
+
+    if(!name || !price || price<1 || !keys.length){
+      message.textContent='Hãy nhập tên, giá và ít nhất một key.';
+      return;
+    }
+
+    const product={
+      game,name,price,keys,
+      icon:'🔑',
+      desc:'Sản phẩm '+game
+    };
+
+    saved.push(product);
+    localStorage.setItem('tb_admin_products',JSON.stringify(saved));
+    items[game].push([product.icon,name,product.desc,price,keys]);
+
+    message.textContent='Đã thêm sản phẩm: '+name;
+    document.getElementById('aName').value='';
+    document.getElementById('aPrice').value='';
+    document.getElementById('aKeys').value='';
+  };
+})();
+</script>
+
 </body>
 </html>

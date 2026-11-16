@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07110f">
+<title>TRANBANG MOD STORE</title>
+<style>
+:root{--bg:#06110f;--panel:#111522;--panel2:#0d1820;--line:#26303a;--green:#20f2a0;--muted:#8c96a8;--white:#f5f7fb}
+*{box-sizing:border-box} html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:#050608;color:var(--white)}
+body:before{content:"";position:fixed;inset:0;z-index:0;background:linear-gradient(180deg,rgba(4,7,19,.28),rgba(3,10,18,.58)),url("anime-background.jpg") center 22%/cover no-repeat;animation:bgDrift 22s ease-in-out infinite alternate;pointer-events:none}
+body:after{content:"";position:fixed;inset:-30% 0;z-index:1;pointer-events:none;opacity:.36;background:repeating-linear-gradient(108deg,transparent 0 17px,rgba(205,205,255,.22) 18px,transparent 20px 37px);background-size:100% 100%;animation:rainMove .65s linear infinite}
+@keyframes bgDrift{from{transform:scale(1)}to{transform:scale(1.07) translate3d(0,-1%,0)}}
+@keyframes rainMove{from{transform:translate3d(-2%, -3%,0)}to{transform:translate3d(2%, 3%,0)}}
+body{padding:0 0 calc(86px + env(safe-area-inset-bottom));overflow-x:hidden}
+.topbar{height:76px;background:#f7f7f7;color:#111;display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:20;border-radius:0 0 22px 22px;box-shadow:0 5px 25px #0007}
+.topbar .mini{font-size:12px;color:#777;display:block;text-align:center;margin-top:1px}.topbar strong{font-size:20px}.close{position:absolute;left:20px;color:#319b70;font-size:17px}.more{position:absolute;right:20px;color:#319b70;font-size:25px}
+.app{max-width:720px;margin:auto;min-height:100vh;background:linear-gradient(180deg,rgba(4,12,18,.70),rgba(4,13,16,.82));position:relative;z-index:2;overflow:hidden}
+.profile{position:relative;z-index:2;background:#0b141b;border-bottom:1px solid #244638;padding:24px 22px;display:flex;align-items:center;gap:14px}
+.avatar{width:66px;height:66px;border-radius:20px;background:linear-gradient(135deg,#293b3c,#111722);border:2px solid #31434a;display:grid;place-items:center;font-size:30px}
+.user{flex:1;min-width:0}.user b{font-size:20px}.uid{color:var(--muted);font-size:13px;letter-spacing:1px;margin-top:5px}
+.lang{border:1.5px solid var(--green);border-radius:16px;padding:12px 10px;color:var(--green);font-weight:700;background:#06251b}
+.balance{text-align:right;margin-left:2px}.balance b{display:block;color:var(--green);font-size:23px}.balance small{color:#66dff0;font-weight:700}
+.role{display:inline-block;margin-top:8px;border:1px solid #1a5645;border-radius:10px;padding:5px 9px;color:#b6d6cb;font-size:10px;letter-spacing:1px}
+main{position:relative;z-index:2;padding:28px 18px 26px}
+.heading{display:flex;align-items:center;gap:16px;margin:18px 8px 26px}.keyicon{width:78px;height:78px;border-radius:25px;background:#06402f;border:1px solid #176c50;display:grid;place-items:center;color:var(--green);font-size:38px;box-shadow:0 0 22px #00e99b20}
+.heading h1{font-size:29px;margin:0 0 7px}.heading p{margin:0;color:var(--muted);font-size:15px}
+.panel{background:linear-gradient(145deg,#121521f2,#0e121df2);border:1px solid #2a3040;border-radius:28px;padding:20px;margin-bottom:24px;box-shadow:0 10px 28px #0003}
+.panel-title{font-size:19px;font-weight:750;margin-bottom:18px}
+.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.game{border:1px solid #2c3040;background:#111522;border-radius:24px;min-height:155px;padding:14px 7px 12px;text-align:center;color:var(--white);cursor:pointer;transition:.18s}
+.game:active,.product:active{transform:scale(.98)}.game.active{border-color:var(--green);box-shadow:0 0 18px #20f2a033}
+.game-icon{width:76px;height:76px;margin:0 auto 10px;border-radius:22px;display:grid;place-items:center;font-size:39px;background:linear-gradient(145deg,#2d5870,#111b2b);border:1px solid #587082}
+.game b{display:block;font-size:14px}.game small{display:block;color:var(--muted);margin-top:8px;font-size:12px}
+.section-banner{background:linear-gradient(110deg,#102d2b,#111927);border:1px solid #28634f;border-radius:24px;padding:22px;margin:0 0 22px}
+.back{display:inline-block;color:#a8f5d7;border:1px solid #31745f;border-radius:13px;padding:9px 13px;margin-bottom:22px;font-size:14px}
+.banner-row{display:flex;align-items:center;gap:18px}.banner-icon{width:94px;height:94px;border-radius:23px;background:linear-gradient(140deg,#e6bb63,#397b9e);display:grid;place-items:center;font-size:45px}
+.banner-row h2{font-size:29px;margin:0 0 8px}.banner-row p{margin:0;color:#9ba8b6;font-size:17px}
+.product{display:flex;align-items:center;gap:16px;background:#121521;border:1px solid #303342;border-radius:24px;padding:17px 16px;margin-bottom:15px;cursor:pointer}
+.product-icon{flex:0 0 94px;width:94px;height:94px;border-radius:22px;background:linear-gradient(145deg,#34343b,#10121a);border:1px solid #46505b;display:grid;place-items:center;font-size:38px}
+.product-info{min-width:0;flex:1}.product-info b{font-size:19px;display:block;margin-bottom:9px}.product-info p{color:#a4abba;margin:0 0 9px;line-height:1.35;font-size:14px}.product-info small{color:#778297;font-size:13px}.arrow{font-size:32px;color:#71819b}
+.fab-wrap{position:fixed;right:max(22px,calc((100vw - 680px)/2 + 20px));bottom:118px;z-index:8;display:flex;flex-direction:column;align-items:center;gap:10px}
+.fab{width:65px;height:65px;border-radius:50%;border:2px solid #35ffc0;background:radial-gradient(circle,#16dca0,#057b58);box-shadow:0 0 0 9px #16dca01c,0 0 28px #16e8a766;color:white;font-size:27px;display:grid;place-items:center;cursor:pointer}
+.music{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--green);background:#063b2d;color:var(--green);font-size:22px;cursor:pointer}
+.support-label{font-size:12px;color:#c9f7e5;border:1px solid #23664e;background:#06271e;border-radius:12px;padding:7px 12px;letter-spacing:1px}
+.bottom{position:fixed;z-index:15;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,720px);height:88px;padding:10px 8px calc(10px + env(safe-area-inset-bottom));background:#080c16f5;border:1px solid #202838;border-radius:26px 26px 0 0;display:grid;grid-template-columns:repeat(3,1fr);backdrop-filter:blur(16px)}
+.nav{border:0;background:transparent;color:#758197;font-size:12px;font-weight:800;letter-spacing:1px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer}.nav span{font-size:27px}.nav.active{color:var(--green)}
+.page{display:none}.page.active{display:block}
+.modal{position:fixed;inset:0;background:#000b;z-index:40;display:none;align-items:flex-end;justify-content:center}.modal.show{display:flex}.sheet{width:min(100%,720px);background:#111722;border:1px solid #34404b;border-radius:26px 26px 0 0;padding:24px 20px 34px}.sheet h2{margin:0 0 8px}.sheet p{color:#aab4c2;line-height:1.5}.sheet button,.action{border:0;border-radius:14px;padding:14px 18px;background:var(--green);color:#042116;font-weight:800;width:100%;font-size:15px}
+.toast{position:fixed;z-index:50;bottom:105px;left:50%;transform:translateX(-50%);background:#13251f;border:1px solid #2e8062;color:#d8fff0;padding:12px 18px;border-radius:14px;display:none;white-space:nowrap}
+.snow{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden}.flake{position:absolute;top:-12px;background:#fff;border-radius:50%;opacity:.7;box-shadow:0 0 8px #fff;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) translateX(25px)}}
+@media(max-width:390px){.profile{padding:19px 14px;gap:9px}.avatar{width:54px;height:54px}.user b{font-size:17px}.lang{padding:9px 7px;font-size:12px}.balance b{font-size:20px}.game{min-height:140px}.game-icon{width:65px;height:65px}.product-icon{width:78px;height:78px;flex-basis:78px}.product-info b{font-size:17px}.banner-row h2{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar"><span class="close">Đóng</span><div><strong>TRANBANG MOD STORE 🛒</strong><span class="mini">mini app</span></div><span class="more">⋯</span></div>
+  <section class="profile">
+    <div class="avatar">🛍️</div>
+    <div class="user"><b>Khách hàng</b><div class="uid">UID: Đang tải...</div></div>
+    <button class="lang" onclick="toast('Ngôn ngữ: Tiếng Việt')">● VI / EN</button>
+    <div class="balance"><b>0đ</b><small>$0.00</small><div class="role">CUSTOMER</div></div>
+  </section>
+  <main>
+    <section id="shopPage" class="page active">
+      <div class="heading"><div class="keyicon">🔑</div><div><h1>Mua Key</h1><p>Hệ thống tự động cấp Key</p></div></div>
+      <div class="panel">
+        <div class="panel-title">🎮 Chọn ứng dụng</div>
+        <div class="games">
+          <button class="game active" onclick="selectGame('Free Fire',this)"><div class="game-icon">🔥</div><b>Free Fire</b><small>4 mục</small></button>
+          <button class="game" onclick="selectGame('Liên Quân',this)"><div class="game-icon">⚔️</div><b>Liên Quân</b><small>0 mục</small></button>
+          <button class="game" onclick="selectGame('PUBG Mobile',this)"><div class="game-icon">🎯</div><b>PUBG Mobile</b><small>0 mục</small></button>
+          <button class="game" onclick="selectGame('8 Ball Pool',this)"><div class="game-icon">🎱</div><b>8 Ball Pool</b><small>0 mục</small></button>
+        </div>
+      </div>
+    </section>
+    <section id="categoryPage" class="page">
+      <div class="section-banner">
+        <span class="back" onclick="showPage('shopPage')">← Danh mục</span>
+        <div class="banner-row"><div class="banner-icon" id="bannerIcon">🔥</div><div><h2 id="gameTitle">Free Fire</h2><p>Chọn sản phẩm</p></div></div>
+      </div>
+      <div id="products"></div>
+    </section>
+    <section id="depositPage" class="page">
+      <div class="heading"><div class="keyicon">💳</div><div><h1>Nạp tiền</h1><p>Nạp số dư vào tài khoản</p></div></div>
+      <div class="panel"><div class="panel-title">Thông tin nạp tiền</div><p style="color:#aab4c2">Phần thanh toán sẽ được kết nối với cổng thanh toán sau khi cấu hình máy chủ và tài khoản SePay.</p><button class="action" onclick="toast('Chức năng thanh toán sẽ được kết nối ở bước tiếp theo')">Tạo yêu cầu nạp tiền</button></div>
+    </section>
+    <section id="profilePage" class="page">
+      <div class="heading"><div class="keyicon">👤</div><div><h1>Cá nhân</h1><p>Thông tin tài khoản của bạn</p></div></div>
+      <div class="panel"><div class="panel-title">Tài khoản</div><p>UID Telegram: Chờ mở trong Telegram Mini App</p><p>Số dư: <b style="color:var(--green)">0đ</b></p><button class="action" onclick="toast('Lịch sử đơn hàng sẽ hiển thị tại đây')">Lịch sử đơn hàng</button></div>
+    </section>
+  </main>
+  <div class="fab-wrap"><button class="music" onclick="toast('Chưa thêm tệp nhạc')">♫</button><button class="fab" onclick="window.open('https://t.me/tranbang0346','_blank')">♧</button><span class="support-label">SUPPORT</span></div>
+  <nav class="bottom">
+    <button class="nav active" onclick="navTo('shopPage',this)"><span>🔑</span>MUA KEY</button>
+    <button class="nav" onclick="navTo('depositPage',this)"><span>💳</span>NẠP TIỀN</button>
+    <button class="nav" onclick="navTo('profilePage',this)"><span>👤</span>CÁ NHÂN</button>
+  </nav>
+</div>
+<div class="snow" id="snow"></div>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><h2 id="modalTitle">Sản phẩm</h2><p id="modalDesc">Thông tin sản phẩm</p><button onclick="toast('Đã ghi nhận lựa chọn mẫu');closeModal()">Tiếp tục</button><p style="text-align:center;margin:14px 0 0" onclick="closeModal()">Đóng</p></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const items={
+ 'Free Fire':[
+  ['👻','Trollmodz X Phantom','Sử dụng được cho Android, iOS và PC.'],
+  ['🔥','Proxy Cheat iOS VIP','Sản phẩm dành cho iOS – Free Fire.'],
+  ['❄️','MizzeCheat','Thông tin và gói sản phẩm Free Fire.'],
+  ['🌌','NovaX Client','Hỗ trợ Android và iOS.']
+ ],
+ 'Liên Quân':[], 'PUBG Mobile':[], '8 Ball Pool':[]
+};
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function navTo(id,el){showPage(id);document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));el.classList.add('active')}
+function selectGame(name,el){document.querySelectorAll('.game').forEach(g=>g.classList.remove('active'));el.classList.add('active');document.getElementById('gameTitle').textContent=name;document.getElementById('bannerIcon').textContent=name==='Free Fire'?'🔥':name==='Liên Quân'?'⚔️':name==='PUBG Mobile'?'🎯':'🎱';let list=items[name]||[];document.getElementById('products').innerHTML=list.length?list.map((p,i)=>`<div class="product" onclick="openProduct('${name}',${i})"><div class="product-icon">${p[0]}</div><div class="product-info"><b>${p[1]}</b><p>${p[2]}</p><small>Nhấn chọn mục</small></div><span class="arrow">›</span></div>`).join(''):'<div class="panel" style="color:#aab4c2">Danh mục này chưa có sản phẩm.</div>';showPage('categoryPage')}
+function openProduct(game,i){let p=items[game][i];document.getElementById('modalTitle').textContent=p[1];document.getElementById('modalDesc').textContent=p[2]+' Các gói và giá bán sẽ được cấu hình trong trang quản trị.';document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+let toastTimer;function toast(s){let t=document.getElementById('toast');t.textContent=s;t.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.style.display='none',2200)}
+const snow=document.getElementById('snow');for(let i=0;i<42;i++){let f=document.createElement('i');f.className='flake';let size=2+Math.random()*6;f.style.width=size+'px';f.style.height=size+'px';f.style.left=Math.random()*100+'%';f.style.animationDuration=(7+Math.random()*13)+'s';f.style.animationDelay=(-Math.random()*18)+'s';snow.appendChild(f)}
+// Initial category list is ready for the first tap.
+</script>
+</body>
+</html>
